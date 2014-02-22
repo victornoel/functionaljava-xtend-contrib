@@ -50,7 +50,7 @@ class FunctionalJavaExtensions {
 	}
 	
 	@Pure
-	@Inline(value="FunctionalJavaExtensions.orThen($1,$2)",imported=FunctionalJavaExtensions)
+	@Inline(value="$3.orThen($1,$2)",imported=FunctionalJavaExtensions)
 	static def <T> Ord<T> operator_or(Ord<T> a, Ord<T> b) {
 		a.orThen(b)
 	}
