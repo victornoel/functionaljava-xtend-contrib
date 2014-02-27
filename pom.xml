@@ -13,7 +13,7 @@
 	<description>Extensions for FunctionalJava with Xtend</description>
 
 	<properties>
-		<xtend-version>2.5.2</xtend-version>
+		<xtend-version>2.5.3</xtend-version>
 		<fj-version>3.1</fj-version>
 	</properties>
 
