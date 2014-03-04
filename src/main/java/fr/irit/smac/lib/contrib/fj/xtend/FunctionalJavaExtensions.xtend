@@ -2,6 +2,7 @@ package fr.irit.smac.lib.contrib.fj.xtend
 
 import fj.Equal
 import fj.F
+import fj.F2
 import fj.Ord
 import fj.Ordering
 import fj.P
@@ -29,6 +30,11 @@ class FunctionalJavaExtensions {
 	@Inline(value="$1.snoc($2)")
 	static def <E> List.Buffer<E> operator_add(List.Buffer<E> collection, E value) {
 		collection.snoc(value)
+	}
+	
+	@Inline(value="$1.append($2)")
+	static def <E> List.Buffer<E> operator_add(List.Buffer<E> collection, List<E> l) {
+		collection.append(l)
 	}
 	
 	@Pure
@@ -115,5 +121,35 @@ class FunctionalJavaExtensions {
 			val min = in.minimum(ord)
 			in.filter[eq.eq(min,it)]
 		}
+	}
+	
+	@Pure
+	static def <A,B> List<B> bindIdx(List<A> l, F2<A, Integer, List<B>> f) {
+		val bs = List.Buffer.empty()
+
+		var xs = l
+		var i = 0
+		while (xs.notEmpty) {
+			bs.append(f.f(xs.head).f(i))
+			xs = xs.tail
+			i = i + 1
+		}
+
+		bs.toList
+	}
+	
+	@Pure
+	static def <A, B> List<B> mapIdx(List<A> l, F2<A, Integer, B> f) {
+		val bs = List.Buffer.empty()
+
+		var xs = l
+		var i = 0
+		while (xs.notEmpty) {
+			bs.snoc(f.f(xs.head).f(i))
+			xs = xs.tail
+			i = i + 1
+		}
+
+		bs.toList
 	}
 }
