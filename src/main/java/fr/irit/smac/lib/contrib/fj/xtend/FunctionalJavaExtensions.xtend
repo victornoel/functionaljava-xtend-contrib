@@ -102,26 +102,18 @@ class FunctionalJavaExtensions {
 		]])
 	}
 	
-	/**
-	 * Will be ordered by ord.max first but equivalent by eq
-	 */
 	@Pure
 	static def <A> List<A> maximums(List<A> in, Equal<A> eq, Ord<A> ord) {
 		in.minimums(eq, ord.inverse)
 	}
 	
-	/**
-	 * Will be ordered by ord.min first but equivalent by eq
-	 */
 	@Pure
 	static def <A> List<A> minimums(List<A> in, Equal<A> eq, Ord<A> ord) {
-		switch in {
-			case List.nil: List.nil
-			default: {
-				val sorted = in.sort(ord)
-				val h = sorted.head
-				sorted.takeWhile[eq.eq(h,it)]
-			}
+		if (in.empty) {
+			List.nil
+		} else {
+			val min = in.minimum(ord)
+			in.filter[eq.eq(min,it)]
 		}
 	}
 }
