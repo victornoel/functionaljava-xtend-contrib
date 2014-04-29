@@ -3,13 +3,22 @@ package fr.irit.smac.lib.contrib.fj.xtend
 import fj.Equal
 import fj.F
 import fj.F2
+import fj.F3
 import fj.Ord
 import fj.Ordering
 import fj.P
 import fj.P2
+import fj.P3
 import fj.data.List
 
 class FunctionalJavaExtensions {
+	
+	@Pure
+	static def doubleEqWithEpsilon(double epsilon) {
+		Equal.equal [double a|[double b|
+			Math.abs(a - b) <= epsilon
+		]]
+	}
 	
 	@Pure
 	static def <A,B> fjFunction(F<A,B> f) {
@@ -151,5 +160,15 @@ class FunctionalJavaExtensions {
 		}
 
 		bs.toList
+	}
+	
+	@Pure
+	static def <A,B,R> List<R> map(List<P2<A,B>> l, F2<A, B, R> f) {
+		l.map[f.f(_1,_2)]
+	}
+	
+	@Pure
+	static def <A,B,C,R> List<R> map(List<P3<A,B,C>> l, F3<A, B, C, R> f) {
+		l.map[f.f(_1,_2,_3)]
 	}
 }
