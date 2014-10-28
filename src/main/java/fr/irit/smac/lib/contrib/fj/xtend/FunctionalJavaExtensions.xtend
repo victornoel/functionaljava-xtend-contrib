@@ -139,7 +139,7 @@ class FunctionalJavaExtensions {
 		var xs = l
 		var i = 0
 		while (xs.notEmpty) {
-			bs.append(f.f(xs.head).f(i))
+			bs.append(f.f(xs.head, i))
 			xs = xs.tail
 			i = i + 1
 		}
@@ -154,7 +154,7 @@ class FunctionalJavaExtensions {
 		var xs = l
 		var i = 0
 		while (xs.notEmpty) {
-			bs.snoc(f.f(xs.head).f(i))
+			bs.snoc(f.f(xs.head, i))
 			xs = xs.tail
 			i = i + 1
 		}
