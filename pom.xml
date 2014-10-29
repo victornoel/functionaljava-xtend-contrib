@@ -11,7 +11,7 @@
 	
 	<groupId>fr.irit.smac.lib.contrib</groupId>
 	<artifactId>functionaljava-xtend-contrib</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.1.1</version>
 	
 	<name>FunctionalJava Xtend Extensions</name>
 	<url>http://www.irit.fr/~Victor.Noel/</url>
@@ -25,7 +25,7 @@
 
 	<properties>
 		<xtend-version>2.7.2</xtend-version>
-		<fj-version>3.2</fj-version>
+		<fj-version>4.1</fj-version>
 	</properties>
 
 	<dependencies>
